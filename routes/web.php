@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'Todo_controller@index');
-
 Route::post('/', 'Todo_controller@create');
 Route::post('/{id}', 'Todo_controller@update');
 Route::post('/{id}/priority', 'Todo_controller@priority');

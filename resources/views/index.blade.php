@@ -9,6 +9,7 @@
     </head>
     <body>
         <p id="result"><button onClick='test(1);'>Turn priority on</button></p>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <section class="tasks">
             <section class="todo">
             <h1>To do</h1>

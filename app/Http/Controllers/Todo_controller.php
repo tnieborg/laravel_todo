@@ -9,8 +9,6 @@ use Validator;
 
 class Todo_controller extends Controller
 {   
-
-   
     //Function to get data and give view
     public function index(){
         return view('index', ['tasks'=> Task::all()] );
@@ -48,10 +46,8 @@ class Todo_controller extends Controller
     
     public function update($id){
         $task = Task::find($id);
-
-        
         $task['done'] = !$task['done'];
-
+    
         $task->save();
         return redirect('');
     }
@@ -70,7 +66,7 @@ class Todo_controller extends Controller
         return redirect('');
     }
     public function ajax(Request $sort){
-
+        $token = $sort->input('_token');
         $sort = $sort->input('sort');
         if($sort == true){
             $tasks = Task::orderBy('priority', 'DESC')->get();
@@ -89,6 +85,7 @@ class Todo_controller extends Controller
                 $todo = $todo . view('partials.task', ["task"=> $task]);
             }
         }
-        return [$todo, $done, $text];
+        return [$todo, $done, $text, $token];
+
     }
 }
