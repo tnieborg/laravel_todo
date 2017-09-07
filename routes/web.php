@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'Todo_controller@index');
+Route::get('/ajax', 'Todo_controller@ajax');
 Route::post('/', 'Todo_controller@create');
 Route::post('/{id}', 'Todo_controller@update');
 Route::post('/{id}/priority', 'Todo_controller@priority');

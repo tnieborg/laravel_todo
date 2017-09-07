@@ -9,7 +9,7 @@
         </form>
         @if( $task['priority'] == 1)
         <form action="/{{ $task['id'] }}/priority" method="post">
-            {{ csrf_field() }}
+            {{ csrf_field() }} 
             {{ method_field("POST")}}
             <button type="submit">{{ $task['priority'] ? "Unprioritize" : "Prioritize" }}</button>
         </form>

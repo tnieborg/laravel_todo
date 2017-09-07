@@ -7,7 +7,7 @@
 
 //require('./bootstrap');
 import * as Ajax from './Ajax';
-Ajax.test(sort);
+// Ajax.test();
 // window.Vue = require('vue');
 
 /**

@@ -60,22 +60,22 @@ class Todo_controller extends Controller
 
     public function priority($id){
         $task = Task::find($id);
-        echo("test");
         $task['priority'] = !$task['priority'];
         $task->save();
         return redirect('');
+
     }
+
     public function ajax(Request $sort){
-        $token = $sort->input('_token');
+
         $sort = $sort->input('sort');
         if($sort == true){
             $tasks = Task::orderBy('priority', 'DESC')->get();
-            $text = "<button onClick='test(0);'>Turn priority off</button>";
+            $text = "<button onClick='xmlreq(\"/ajax?sort=0\" ,func , \"{{ csrf_token() }}\");'>Turn priority off</button>";
         }else{
             $tasks = Task::all();
-            $text = "<button onClick='test(1);'>Turn priority on</button>";
+            $text = "<button onClick='xmlreq(\"/ajax?sort=1\" ,func , \"{{ csrf_token() }}\");'>Turn priority on</button>";
         }
-        $parsedHTML = [];
         $done = "";
         $todo = "";
         foreach( $tasks as $task){
@@ -85,7 +85,7 @@ class Todo_controller extends Controller
                 $todo = $todo . view('partials.task', ["task"=> $task]);
             }
         }
-        return [$todo, $done, $text, $token];
+        return [$todo, $done, $text];
 
     }
 }

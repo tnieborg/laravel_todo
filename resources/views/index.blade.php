@@ -8,7 +8,7 @@
         <title>Todo List</title>
     </head>
     <body>
-        <p id="result"><button onClick='test(1);'>Turn priority on</button></p>
+        <p id="result"><button onClick='xmlreq("/ajax?sort=1" ,func , "{{ csrf_token() }}");'>Turn priority on</button></p>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <section class="tasks">
             <section class="todo">
